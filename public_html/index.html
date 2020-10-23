@@ -72,6 +72,20 @@
                         + "}";
                 return putRequest;
             }
+            function executeCommand(reqString, dbBaseUrl, apiEndPointUrl){
+                var url = dbBaseUrl + apiEndPointUrl;
+                var jsonObj;
+                $.post(url, reqString, function (result){
+                    jsonObj = JSON.parse(dataJsonObj);
+                });
+                return jsonObj;
+            } 
+            function resetForm(){
+                $("#empId").val("")
+                $("#empName").val("");
+                $("#empEmail").val("");
+                $("#empId").focus("");
+            }
             function saveEmployee() {
                 // alert("It worked");
                 // validate form data
@@ -80,7 +94,7 @@
                     return;
                 }
                 // create JPDB request string - token, dbname, rel name....
-                var putReqStr = createPUTRequest("90936861|-31948784479254024|90932362", jsonStr, "SAMPLE", "EMP-REL");
+                var putReqStr = createPUTRequest("90937317|-31948792375799333|90932603", jsonStr, "SAMPLE", "EMP-REL");
                 alert(putReqStr);
                 jQuery.ajaxSetup({async: false});
                 // execute this request
